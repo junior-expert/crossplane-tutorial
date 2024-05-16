@@ -1,5 +1,5 @@
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: ClusterClaim
 metadata:
   name: cluster-01
@@ -20,7 +20,7 @@ metadata:
 data:
   password: SVdpbGxOZXZlclRlbGxAMQ==
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: SQLClaim
 metadata:
   name: silly-demo-db
@@ -36,7 +36,7 @@ spec:
     databases:
       - silly-demo-db
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: AppClaim
 metadata:
   name: silly-demo

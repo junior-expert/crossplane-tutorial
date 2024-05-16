@@ -178,7 +178,7 @@ else
     DB_NAME=silly-demo-db-$(date +%Y%m%d%H%M%S)
 
     echo "---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: ClusterClaim
 metadata:
   name: cluster-01
@@ -199,7 +199,7 @@ metadata:
 data:
   password: SVdpbGxOZXZlclRlbGxAMQ==
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: SQLClaim
 metadata:
   name: silly-demo-db
@@ -213,7 +213,7 @@ spec:
     version: \"11\"
     size: small
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: AppClaim
 metadata:
   name: silly-demo

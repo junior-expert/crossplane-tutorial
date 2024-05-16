@@ -157,13 +157,13 @@ metadata:
 data:
   password: T1QrOXZQcDhMdXhoeFVQWVpLSk1kUG1YM04xTzBTd3YzWG5ZVjI0UFZzcz0=
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: SQLClaim
 metadata:
   name: my-db
   annotations:
-    organization: DevOps Toolkit
-    author: Viktor Farcic <viktor@farcic.com>
+    organization: lz platform
+    author: shahab <shahab.rajaei@leaseplan.com>
 spec:
   id: $DB_NAME
   compositionSelector:
@@ -183,13 +183,13 @@ metadata:
 data:
   password: T1QrOXZQcDhMdXhoeFVQWVpLSk1kUG1YM04xTzBTd3YzWG5ZVjI0UFZzcz0=
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: SQLClaim
 metadata:
   name: my-db
   annotations:
-    organization: DevOps Toolkit
-    author: Viktor Farcic <viktor@farcic.com>
+    organization: lz platform
+    author: shahab <shahab.rajaei@leaseplan.com>
 spec:
   id: $DB_NAME
   compositionSelector:
@@ -212,13 +212,13 @@ metadata:
 data:
   password: T1QrOXZQcDhMdXhoeFVQWVpLSk1kUG1YM04xTzBTd3YzWG5ZVjI0UFZzcz0=
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: SQLClaim
 metadata:
   name: my-db
   annotations:
-    organization: DevOps Toolkit
-    author: Viktor Farcic <viktor@farcic.com>
+    organization: lz platform
+    author: shahab <shahab.rajaei@leaseplan.com>
 spec:
   id: $DB_NAME
   compositionSelector:

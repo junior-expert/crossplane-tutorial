@@ -2,9 +2,9 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: sqls.devopstoolkitseries.com
+  name: sqls.leaseplan.com
 spec:
-  group: devopstoolkitseries.com
+  group: leaseplan.com
   names:
     kind: SQL
     plural: sqls
@@ -12,8 +12,8 @@ spec:
     kind: SQLClaim
     plural: sqlclaims
   versions:
-  - name: v1alpha1
-    served: true
-    referenceable: true
-    schema:
-      openAPIV3Schema: {}
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema: {}

@@ -1,4 +1,4 @@
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: SQL
 metadata:
   name: my-db

@@ -7,7 +7,7 @@ metadata:
 data:
   password: T1QrOXZQcDhMdXhoeFVQWVpLSk1kUG1YM04xTzBTd3YzWG5ZVjI0UFZzcz0=
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: leaseplan.com/v1alpha1
 kind: SQL
 metadata:
   name: my-db-20240114235140
