@@ -25,7 +25,7 @@ spec:
         kind: VPC
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             cidrBlock: 11.0.0.0/16
             enableDnsSupport: true
             enableDnsHostnames: true
@@ -38,11 +38,11 @@ spec:
         kind: Subnet
         metadata:
           labels:
-            zone: us-east-1a
+            zone: eu-west-1a
         spec:
           forProvider:
-            region: us-east-1
-            availabilityZone: us-east-1a
+            region: eu-west-1
+            availabilityZone: eu-west-1a
             cidrBlock: 11.0.0.0/24
             vpcIdSelector:
               matchControllerRef: true
@@ -61,11 +61,11 @@ spec:
         kind: Subnet
         metadata:
           labels:
-            zone: us-east-1b
+            zone: eu-west-1b
         spec:
           forProvider:
-            region: us-east-1
-            availabilityZone: us-east-1b
+            region: eu-west-1
+            availabilityZone: eu-west-1b
             cidrBlock: 11.0.1.0/24
             vpcIdSelector:
               matchControllerRef: true
@@ -84,11 +84,11 @@ spec:
         kind: Subnet
         metadata:
           labels:
-            zone: us-east-1c
+            zone: eu-west-1c
         spec:
           forProvider:
-            region: us-east-1
-            availabilityZone: us-east-1c
+            region: eu-west-1
+            availabilityZone: eu-west-1c
             cidrBlock: 11.0.2.0/24
             vpcIdSelector:
               matchControllerRef: true
@@ -107,7 +107,7 @@ spec:
         kind: SubnetGroup
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             description: I'm too lazy to write a good description
             subnetIdSelector:
               matchControllerRef: true
@@ -120,7 +120,7 @@ spec:
         kind: InternetGateway
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             vpcIdSelector:
               matchControllerRef: true
       patches:
@@ -132,7 +132,7 @@ spec:
         kind: RouteTable
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             vpcIdSelector:
               matchControllerRef: true
       patches:
@@ -144,7 +144,7 @@ spec:
         kind: Route
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             routeTableIdSelector:
               matchControllerRef: true
             destinationCidrBlock: 0.0.0.0/0
@@ -159,7 +159,7 @@ spec:
         kind: MainRouteTableAssociation
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             routeTableIdSelector:
               matchControllerRef: true
             vpcIdSelector:
@@ -173,13 +173,13 @@ spec:
         kind: RouteTableAssociation
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             routeTableIdSelector:
               matchControllerRef: true
             subnetIdSelector:
               matchControllerRef: true
               matchLabels:
-                zone: us-east-1a
+                zone: eu-west-1a
       patches:
         - fromFieldPath: metadata.annotations
           toFieldPath: metadata.annotations
@@ -195,13 +195,13 @@ spec:
         kind: RouteTableAssociation
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             routeTableIdSelector:
               matchControllerRef: true
             subnetIdSelector:
               matchControllerRef: true
               matchLabels:
-                zone: us-east-1b
+                zone: eu-west-1b
       patches:
         - fromFieldPath: metadata.annotations
           toFieldPath: metadata.annotations
@@ -217,13 +217,13 @@ spec:
         kind: RouteTableAssociation
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             routeTableIdSelector:
               matchControllerRef: true
             subnetIdSelector:
               matchControllerRef: true
               matchLabels:
-                zone: us-east-1c
+                zone: eu-west-1c
       patches:
         - fromFieldPath: metadata.annotations
           toFieldPath: metadata.annotations
@@ -240,7 +240,7 @@ spec:
         spec:
           forProvider:
             description: I am too lazy to write descriptions
-            region: us-east-1
+            region: eu-west-1
             vpcIdSelector:
               matchControllerRef: true
       patches:
@@ -253,7 +253,7 @@ spec:
         spec:
           forProvider:
             description: I am too lazy to write descriptions
-            region: us-east-1
+            region: eu-west-1
             type: ingress
             fromPort: 5432
             toPort: 5432
@@ -271,7 +271,7 @@ spec:
         kind: Instance
         spec:
           forProvider:
-            region: us-east-1
+            region: eu-west-1
             dbSubnetGroupNameSelector:
               matchControllerRef: true
             vpcSecurityGroupIdSelector:
