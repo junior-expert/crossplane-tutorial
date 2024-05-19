@@ -31,6 +31,9 @@ spec:
                     version:
                       description: The DB version depends on the DB type and versions available in the selected provider.
                       type: string
+                    env:
+                      type: string
+                      description: env to deploy db to
                     size:
                       description: "Supported sizes: small, medium, large"
                       type: string
