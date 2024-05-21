@@ -1,0 +1,17 @@
+apiVersion: s3.aws.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: crossplane-bucket-manual
+  namespace: a-team
+  annotations:
+    crossplane.io/external-name: crossplane-bucket-manual
+spec:
+  forProvider:
+    region: eu-west-1
+  writeConnectionSecretToRef:
+    name: bucket-info
+    namespace: a-team
+  managementPolicies:
+    - "*"
+  providerConfigRef:
+    name: default

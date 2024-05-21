@@ -1,0 +1,127 @@
+---
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: aws-postgresql
+  labels:
+    provider: aws
+    db: postgresql
+spec:
+  compositeTypeRef:
+    apiVersion: leaseplan.com/v1alpha1
+    kind: SQL
+  mode: Pipeline
+  pipeline:
+    - functionRef:
+        name: function-patch-and-transform
+      step: patch-and-transform
+      input:
+        apiVersion: pt.fn.crossplane.io/v1beta1
+        kind: Resources
+        patchSets:
+          - name: metadata
+            patches:
+              - fromFieldPath: metadata.annotations
+                toFieldPath: metadata.annotations
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+        resources:
+          - name: vpc
+            base:
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: VPC
+              annotations:
+                crossplane.io/external-name: "vpc-0622a0a7552ac8c3c"
+              spec:
+                managementPolicies: ["Observe"]
+                forProvider: {}
+
+            patches:
+              # - type: PatchSet
+              #   patchSetName: metadata
+              # - fromFieldPath: spec.env
+              #   toFieldPath: metadata.name
+          #   transforms:
+          #     - type: string
+          #       string:
+          #         fmt: "vpc-%s"
+          #         type: Format
+          # - name: subnet-a
+          #   base:
+          #     apiVersion: ec2.aws.upbound.io/v1beta1
+          #     kind: Subnet
+          #     metadata:
+          #       labels:
+          #         zone: eu-west-1a
+          #     annotations:
+          #       crossplane.io/external-name: subnet-08986e4f5ca828adf
+          #     spec:
+          #       managementPolicies: ["Observe"]
+          #       forProvider:
+          #         region: eu-west-1
+          #         availabilityZone: eu-west-1a
+          #         vpcId: vpc-0622a0a7552ac8c3c
+
+          # patches:
+          #   - fromFieldPath: spec.env
+          #     toFieldPath: spec.forProvider.externalName
+          #     transforms:
+          #       - type: string
+          #         string:
+          #           fmt: subnet-%s-private-a
+          #           type: Format
+          # - name: subnetgroup
+          #   base:
+          #     apiVersion: rds.aws.upbound.io/v1beta1
+          #     kind: SubnetGroup
+          #     spec:
+          #       forProvider:
+          #         region: eu-west-1
+          #         description: I'm too lazy to write a good description
+          #         # subnetIdSelector:
+          #         #   matchControllerRef: true
+          #         subnetIds:
+          #           - subnet-0f4f781162cf85a39
+          #           - subnet-098eb538d61d8b415
+          #   patches:
+          #     - type: PatchSet
+          #       patchSetName: metadata
+          - name: securityGroup
+            base:
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: SecurityGroup
+              spec:
+                forProvider:
+                  description: I am too lazy to write descriptions
+                  region: eu-west-1
+                  vpcIdRef:
+                    name: vpc
+                  # vpcIdSelector:
+                  #   matchControllerRef: true
+                  # vpcId: vpc-0622a0a7552ac8c3c
+            patches:
+              - type: PatchSet
+                patchSetName: metadata
+          - name: securityGroupRule
+            base:
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: SecurityGroupRule
+              spec:
+                forProvider:
+                  description: I am too lazy to write descriptions
+                  region: eu-west-1
+                  type: ingress
+                  fromPort: 5432
+                  toPort: 5432
+                  protocol: tcp
+                  cidrBlocks:
+                    - 10.0.0.0/8
+                  securityGroupIdSelector:
+                    matchControllerRef: true
+            patches:
+              - type: PatchSet
+                patchSetName: metadata
+
+    - functionRef:
+        name: function-auto-ready
+      step: automatically-detect-ready-composed-resources

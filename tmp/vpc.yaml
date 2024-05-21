@@ -1,0 +1,24 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: VPC
+metadata:
+  name: vpc
+  namespace: a-team
+  # annotations:
+  #   crossplane.io/external-name: "vpc-0622a0a7552ac8c3c"
+spec:
+  forProvider:
+    region: eu-west-1
+    tags:
+      Name: "vpc-production"
+  deletionPolicy: Orphan
+  vpcIdSelector:
+    matchLabels:
+      Name: vpc-production
+
+  writeConnectionSecretToRef:
+    name: vpc-info
+    namespace: a-team
+  managementPolicies:
+    - Observe
+  providerConfigRef:
+    name: default
